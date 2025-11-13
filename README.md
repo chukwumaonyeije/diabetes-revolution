@@ -1,31 +1,55 @@
-# Diabetes Revolution
+# Diabetes Revolution 2026
 
-A Hugo-based static blog website dedicated to diabetes education, management, and awareness. Created by Dr. Onyeije.
+> A fun, image-driven quiz app for learning about Gestational Diabetes
 
-## About
+**Created by Dr. Onyeije, MFM Specialist**
 
-Diabetes Revolution is an informational website aimed at providing valuable resources, insights, and guidance for individuals managing diabetes and healthcare professionals. The site features articles, tips, and expert advice on diabetes prevention, treatment, and lifestyle management.
+## 🎯 Overview
 
-## Features
+Diabetes Revolution 2026 is an educational web application that helps pregnant women and their families understand gestational diabetes mellitus (GDM) through interactive, bite-sized quizzes. The app transforms complex medical concepts into simple, memorable learning experiences with:
 
-- Fast, secure static website built with Hugo
-- Responsive design that works on all devices
-- SEO-optimized for better search visibility
-- RSS feed support
-- Clean, readable blog layout
-- Math equation rendering (KaTeX)
-- Image galleries (PhotoSwipe)
-- Diagram support (Mermaid.js)
+- 🖼️ Visual, image-rich content
+- ❓ Multiple-choice quizzes with immediate feedback
+- 📚 Clear explanations written by an MFM specialist
+- 🎮 Quest-based progression system
+- 📱 Mobile-first responsive design
 
-## Prerequisites
+## ✨ Features
 
-Before you begin, ensure you have the following installed:
+### Current Features (MVP)
+- ✅ Interactive quiz engine with progress tracking
+- ✅ Immediate feedback and detailed explanations
+- ✅ Score tracking and results visualization
+- ✅ Mobile-responsive design with Tailwind CSS
+- ✅ Static site generation for fast loading
+- ✅ Local storage for progress persistence
+- ✅ Medical disclaimer and clinical accuracy
 
-- [Git](https://git-scm.com/)
-- [Hugo](https://gohugo.io/) (Extended version recommended)
-  - Current version: v0.68.3 (consider upgrading to latest)
+### Quiz Categories
+- **Basics:** Introduction to GDM
+- **Diagnosis:** How GDM is detected
+- **Monitoring:** Blood sugar tracking
+- **Treatment:** Management approaches
+- **Nutrition:** Diet and meal planning
+- **Complications:** Risks and prevention
+- **Postpartum:** After delivery care
 
-## Installation
+## 🛠️ Technology Stack
+
+- **Framework:** Next.js 16 with App Router
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **Deployment:** Azure Static Web Apps
+- **Build:** Static export (no server required)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 20 or higher
+- npm
+
+### Installation
 
 1. **Clone the repository:**
    ```bash
@@ -33,176 +57,219 @@ Before you begin, ensure you have the following installed:
    cd diabetes-revolution
    ```
 
-2. **Initialize the theme submodule:**
+2. **Install dependencies:**
    ```bash
-   git submodule update --init --recursive
+   npm install
    ```
 
-3. **Verify installation:**
+3. **Run development server:**
    ```bash
-   hugo version
+   npm run dev
    ```
 
-## Local Development
-
-### Running the Development Server
-
-Start the Hugo development server with draft content enabled:
-
-```bash
-hugo server -D
-```
-
-The site will be available at `http://localhost:1313`
+4. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Building for Production
 
-Generate the static site files:
-
 ```bash
-hugo
+npm run build
 ```
 
-The generated site will be in the `public/` directory.
+The static site will be exported to the `/out` directory.
 
-## Adding Content
-
-### Creating a New Blog Post
-
-1. **Generate a new post:**
-   ```bash
-   hugo new posts/my-new-post.md
-   ```
-
-2. **Edit the post:**
-   Open `content/posts/my-new-post.md` and add your content:
-   ```markdown
-   ---
-   title: "Understanding Type 2 Diabetes"
-   date: 2024-01-15T10:00:00Z
-   draft: false
-   ---
-
-   Your content here...
-   ```
-
-3. **Preview your post:**
-   - Run `hugo server -D` to see drafts
-   - Set `draft: false` when ready to publish
-
-### Content Guidelines
-
-When writing diabetes-related content:
-- Ensure medical accuracy
-- Cite reputable sources
-- Include appropriate disclaimers
-- Use clear, accessible language
-- Consider adding relevant images or diagrams
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 diabetes-revolution/
-├── archetypes/          # Content templates
-├── content/             # Markdown content files
-│   └── posts/          # Blog posts
-├── themes/             # Hugo themes
-│   └── beautifulhugo/  # Beautiful Hugo theme
-├── public/             # Generated static site (git-ignored)
-├── static/             # Static assets (images, files)
-├── config.toml         # Site configuration
-└── README.md           # This file
+├── app/                      # Next.js app directory
+│   ├── layout.tsx           # Root layout
+│   ├── page.tsx             # Home page
+│   └── quiz/[id]/           # Dynamic quiz routes
+│       └── page.tsx
+├── components/               # React components
+│   ├── quiz/                # Quiz-related components
+│   │   ├── QuizContainer.tsx
+│   │   ├── QuizQuestion.tsx
+│   │   └── QuizResults.tsx
+│   ├── quest/               # Quest system (future)
+│   └── ui/                  # Reusable UI components
+├── data/                    # Quiz content
+│   └── quizzes/
+│       ├── gdm-basics.ts    # Sample quiz
+│       └── index.ts         # Quiz exports
+├── lib/                     # Utility functions
+│   └── quiz-utils.ts        # Quiz logic and scoring
+├── types/                   # TypeScript type definitions
+│   └── quiz.ts              # Quiz-related types
+├── public/                  # Static assets
+├── .github/                 # GitHub Actions workflows
+└── hugo-backup/             # Original Hugo files (backup)
 ```
 
-## Configuration
+## 📝 Adding New Quizzes
 
-Main site settings are in `config.toml`:
+1. **Create a new quiz file:**
+   ```typescript
+   // data/quizzes/my-new-quiz.ts
+   import { Quiz } from '@/types/quiz';
 
-```toml
-baseURL = "http://example.org/"  # Update with your domain
-languageCode = "en-us"
-title = "Diabetes Revolution- Created by Dr. Onyeije"
-theme = "beautifulhugo"
+   export const myNewQuiz: Quiz = {
+     id: 'unique-quiz-id',
+     title: 'Quiz Title',
+     description: 'Quiz description',
+     category: 'basics',
+     difficulty: 'beginner',
+     estimatedMinutes: 5,
+     questions: [
+       {
+         id: 'q1',
+         question: 'Your question here?',
+         options: [
+           { id: 'a', text: 'Option A' },
+           { id: 'b', text: 'Option B' },
+           { id: 'c', text: 'Option C' },
+           { id: 'd', text: 'Option D' },
+         ],
+         correctAnswer: 'a',
+         explanation: 'Detailed explanation here...',
+         tags: ['tag1', 'tag2'],
+       },
+       // Add more questions...
+     ],
+   };
+   ```
+
+2. **Export the quiz:**
+   ```typescript
+   // data/quizzes/index.ts
+   import { myNewQuiz } from './my-new-quiz';
+
+   export const quizzes: Quiz[] = [
+     gdmBasicsQuiz,
+     myNewQuiz, // Add your quiz here
+   ];
+   ```
+
+3. **Add to static params:**
+   ```typescript
+   // app/quiz/[id]/page.tsx
+   export async function generateStaticParams() {
+     return [
+       { id: 'gdm-basics-101' },
+       { id: 'unique-quiz-id' }, // Add your quiz ID
+     ];
+   }
+   ```
+
+## 🎨 Customization
+
+### Styling
+
+The app uses Tailwind CSS. Customize the theme in `tailwind.config.ts` and global styles in `app/globals.css`.
+
+### Content
+
+All quiz content is stored in TypeScript files under `data/quizzes/`. This allows for:
+- Type safety
+- Easy version control
+- Content validation
+- IDE autocomplete
+
+## 🚢 Deployment
+
+### Azure Static Web Apps (Current)
+
+The app automatically deploys to Azure Static Web Apps when pushed to the `main` branch via GitHub Actions.
+
+**Workflow:** `.github/workflows/azure-static-web-apps-lively-plant-049e20f0f.yml`
+
+### Alternative Deployment Options
+
+**Vercel:**
+```bash
+npm install -g vercel
+vercel
 ```
 
-### Important Configuration Steps
+**GitHub Pages:**
+```bash
+npm run build
+# Deploy the /out directory to gh-pages branch
+```
 
-1. **Update baseURL:** Change to your actual domain
-2. **Add author information:** Configure author details in config.toml
-3. **Set up navigation:** Add menu items
-4. **Configure social links:** Add social media profiles
+**Netlify:**
+```bash
+# Connect GitHub repo to Netlify
+# Build command: npm run build
+# Publish directory: out
+```
 
-See [Hugo documentation](https://gohugo.io/getting-started/configuration/) for advanced configuration options.
+## 📱 Mobile Support
 
-## Deployment
+The app is built mobile-first with responsive breakpoints:
+- **Mobile:** < 640px
+- **Tablet:** 640px - 1024px
+- **Desktop:** > 1024px
 
-This site is configured for deployment on **Azure Static Web Apps** via GitHub Actions.
+## ♿ Accessibility
 
-### Automatic Deployment
+- Semantic HTML5
+- ARIA labels where needed
+- Keyboard navigation support
+- Color contrast compliance
+- Screen reader friendly
 
-1. Push changes to the `main` branch
-2. GitHub Actions automatically builds and deploys the site
-3. Changes go live at your Azure Static Web Apps URL
+## 🔐 Privacy & Data
 
-### Manual Deployment
+- No personal health information (PHI) is collected
+- Quiz progress stored locally in browser (localStorage)
+- No external tracking or analytics
+- No user accounts required
 
-You can also deploy to other platforms:
+## ⚕️ Medical Disclaimer
 
-- **Netlify:** Connect your GitHub repo and deploy
-- **GitHub Pages:** Use GitHub Actions workflow
-- **Vercel:** Import your repository
-- **AWS S3:** Upload the `public/` folder
+This app is for **educational purposes only** and is not intended as medical advice. Always consult with qualified healthcare professionals for diagnosis and treatment of diabetes or any other medical condition.
 
-## Theme
+Content is aligned with **ACOG/SMFM guidelines** and reviewed by MFM specialists.
 
-This site uses the [Beautiful Hugo](https://github.com/halogenica/beautifulhugo) theme, which is based on the Beautiful Jekyll theme.
+## 🤝 Contributing
 
-### Theme Customization
+Contributions are welcome! Areas for improvement:
 
-To customize the theme:
-- Modify `config.toml` for basic settings
-- Override theme files by creating files in your project root
-- See theme documentation for available options
+- Additional quiz content
+- New quiz categories
+- Quest system implementation
+- Image and diagram creation
+- Translation support
+- Accessibility enhancements
 
-## Contributing
+## 📄 License
 
-Contributions are welcome! To contribute:
+[Specify your license - e.g., MIT, Creative Commons]
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## 👨‍⚕️ About the Author
 
-### Content Contributions
+**Dr. Onyeije** - Maternal-Fetal Medicine Specialist
 
-If you're a healthcare professional or diabetes expert:
-- Submit guest posts via pull requests
-- Ensure content is medically accurate and properly sourced
-- Include appropriate author attribution
+Dedicated to improving maternal and fetal health through education and evidence-based care.
 
-## Medical Disclaimer
+## 🙏 Acknowledgments
 
-**Important:** The information provided on this website is for educational purposes only and is not intended as medical advice. Always consult with qualified healthcare professionals for diagnosis and treatment of diabetes or any other medical condition.
+- Built with [Next.js](https://nextjs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Developed with assistance from [Claude Code](https://claude.ai)
+- Content aligned with ACOG/SMFM clinical guidelines
 
-## License
+## 📞 Support
 
-[Specify your license here - e.g., MIT, Apache 2.0, Creative Commons, etc.]
-
-## Contact
-
-**Dr. Onyeije**
-
-- Website: [Update with actual URL]
-- Email: [Add contact email]
-- GitHub: [@chukwumaonyeije](https://github.com/chukwumaonyeije)
-
-## Acknowledgments
-
-- Built with [Hugo](https://gohugo.io/)
-- Theme: [Beautiful Hugo](https://github.com/halogenica/beautifulhugo)
-- Deployed on Azure Static Web Apps
+For questions or feedback:
+- Open an issue on GitHub
+- Email: [Your contact email]
+- Website: [Your website]
 
 ---
 
-**Last Updated:** November 2024
+**Built with ❤️ for pregnant women and families**
+
+*Last Updated: November 2024*
