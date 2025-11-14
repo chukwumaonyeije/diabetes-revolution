@@ -1,12 +1,15 @@
 # Diabetes Revolution - Complete GDM Learning Platform
 
-🎉 **Version 2.0 with Teal/Green Theme & 20 Comprehensive Quizzes!**
+🎉 **Version 2.0 with Enhanced Landing Page, About & Contact Pages!**
 
 ## ✨ What's New
 
+- ✅ **Professional Landing Page** - Modern design with hero, features, testimonials, and CTAs
+- ✅ **About Page** - Detailed information about the platform and Dr. Onyeije
+- ✅ **Contact Page** - Full-featured contact form with FAQ
 - ✅ **Teal & Green Color Scheme** - Professional medical aesthetic
 - ✅ **20 Complete Quizzes** - 100 medically-accurate questions covering all GDM topics
-- ✅ **Enhanced UI** - Improved cards, gradients, and mobile responsiveness
+- ✅ **Enhanced UI** - Reusable components, sticky navigation, comprehensive footer
 
 ## 📚 Complete Quiz Library (20 Quizzes)
 
@@ -48,22 +51,13 @@
 
 ## 🚀 Quick Start
 
-1. **Extract all files** into your project directory
-2. **Copy ALL folders** to replace your existing files:
-   ```
-   app/
-   components/
-   data/
-   lib/
-   types/
-   ```
-3. **Run the app**:
-   ```bash
-   cd diabetes-revolution
-   npm install
-   npm run dev
-   ```
-4. **Open** http://localhost:3000
+```bash
+cd diabetes-revolution
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🎨 Color Scheme
 
@@ -90,22 +84,57 @@ All quiz content is:
 
 ## 🔧 Technical Features
 
-- Next.js 15 with App Router
+- Next.js 16 with App Router
+- React 19
 - TypeScript throughout
 - Tailwind CSS 4
 - localStorage for progress tracking
-- Static export ready
 - Mobile-responsive design
 - Optimized performance
+- Static site generation (SSG)
+
+## 📁 Project Structure
+
+```
+diabetes-revolution/
+├── app/
+│   ├── about/          # About page
+│   ├── contact/        # Contact page
+│   ├── quiz/[id]/      # Dynamic quiz pages
+│   └── page.tsx        # Enhanced landing page
+├── components/
+│   ├── ui/             # Reusable UI components
+│   └── quiz/           # Quiz-specific components
+├── data/
+│   └── quizzes/        # Quiz data (20 quizzes)
+├── lib/                # Utilities
+└── types/              # TypeScript types
+```
 
 ## 📤 Deployment
 
-Push to GitHub to auto-deploy to Azure:
+### Deploy to Vercel (Recommended)
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+See [DEPLOY_TO_VERCEL.md](./DEPLOY_TO_VERCEL.md) for detailed instructions.
+
+### Or Deploy to Azure
 ```bash
 git add .
-git commit -m "Update to v2.0 with 20 quizzes and teal theme"
+git commit -m "Deploy enhanced landing page"
 git push origin main
 ```
+
+## 📚 Documentation
+
+- [Landing Page Summary](./LANDING_PAGE_SUMMARY.md) - Complete feature list
+- [Vercel Deployment Guide](./DEPLOY_TO_VERCEL.md) - Step-by-step deployment
 
 ## 👨‍⚕️ Created By
 
