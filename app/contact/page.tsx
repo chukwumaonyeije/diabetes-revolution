@@ -15,18 +15,39 @@ export default function ContactPage() {
   });
   
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement actual form submission logic
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError('');
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
-      setSubmitted(false);
-    }, 3000);
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      setError('Failed to send message. Please try emailing us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -60,12 +81,18 @@ export default function ContactPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
               
+              {error && (
+                <div className="bg-red-50 border-2 border-red-500 rounded-xl p-4 mb-6 text-center">
+                  <p className="text-red-700">{error}</p>
+                </div>
+              )}
+              
               {submitted ? (
                 <div className="bg-green-50 border-2 border-green-500 rounded-xl p-8 text-center">
                   <div className="text-6xl mb-4">✅</div>
                   <h3 className="text-2xl font-bold text-green-800 mb-2">Thank You!</h3>
                   <p className="text-green-700">
-                    Your message has been received. We'll get back to you as soon as possible.
+                    Your message has been sent successfully! We'll get back to you within 1-2 business days.
                   </p>
                 </div>
               ) : (
@@ -140,8 +167,8 @@ export default function ContactPage() {
                     />
                   </div>
                   
-                  <Button type="submit" size="lg" fullWidth>
-                    Send Message →
+                  <Button type="submit" size="lg" fullWidth disabled={isSubmitting}>
+                    {isSubmitting ? 'Sending...' : 'Send Message →'}
                   </Button>
                 </form>
               )}
