@@ -2,6 +2,7 @@ import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'About Us | Diabetes Revolution',
@@ -65,8 +66,14 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-5 gap-8 items-center">
             <div className="md:col-span-2">
               <div className="bg-white p-6 rounded-2xl shadow-xl">
-                <div className="aspect-square bg-gradient-to-br from-teal-100 to-green-100 rounded-xl flex items-center justify-center mb-4">
-                  <span className="text-9xl">👨‍⚕️</span>
+                <div className="aspect-square relative overflow-hidden rounded-xl mb-4">
+                  <Image
+                    src="/dr-onyeije.jpg"
+                    alt="Dr. Chukwuma Onyeije"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">

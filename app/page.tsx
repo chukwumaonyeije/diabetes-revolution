@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { quizzes } from '@/data/quizzes/index';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
@@ -163,8 +164,14 @@ export default function Home() {
               </Button>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-2xl">
-              <div className="aspect-square bg-gradient-to-br from-teal-100 to-green-100 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-8xl">👨‍⚕️</span>
+              <div className="aspect-square relative overflow-hidden rounded-xl mb-6">
+                <Image
+                  src="/dr-onyeije.jpg"
+                  alt="Dr. Chukwuma Onyeije"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
