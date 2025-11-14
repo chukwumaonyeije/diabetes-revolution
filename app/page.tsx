@@ -169,7 +169,7 @@ export default function Home() {
                   src="/dr-onyeije.jpg"
                   alt="Dr. Chukwuma Onyeije"
                   fill
-                  className="object-cover"
+                  className="object-contain p-4 bg-gradient-to-br from-teal-50 to-green-50"
                   priority
                 />
               </div>
