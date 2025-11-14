@@ -1,0 +1,98 @@
+===============================================
+DIABETES REVOLUTION - GDM QUIZ APP
+Installation Instructions
+===============================================
+
+📦 WHAT YOU DOWNLOADED:
+All the source files for your Next.js GDM Quiz Application
+
+🎯 INSTALLATION STEPS:
+
+1. EXTRACT THE FILES
+   - Extract this zip file
+   - You'll see folders: app, components, data, lib, types, public
+
+2. COPY TO YOUR PROJECT
+   - Navigate to: C:\Users\onyei\Projects\diabetes-revolution
+   - Copy ALL extracted folders into that directory
+   - When asked to overwrite files, click "Yes to All"
+   
+   The folder structure should look like:
+   diabetes-revolution/
+   ├── app/
+   ├── components/
+   ├── data/
+   ├── lib/
+   ├── types/
+   ├── public/
+   ├── node_modules/ (already there)
+   ├── package.json (already there)
+   └── ... other config files
+
+3. INSTALL & RUN
+   Open PowerShell in the diabetes-revolution folder:
+   
+   npm install
+   npm run dev
+   
+4. OPEN IN BROWSER
+   Go to: http://localhost:3000
+   
+   You should see:
+   - Landing page with "Diabetes Revolution" header
+   - Feature cards
+   - "GDM Basics" quiz card
+   - Click "Start Quiz" to test it!
+
+===============================================
+
+🔧 TROUBLESHOOTING:
+
+Problem: "npm run dev" shows errors
+Solution: Delete node_modules and package-lock.json, then run:
+   npm install
+   npm run dev
+
+Problem: Still seeing the default Next.js page
+Solution: Make sure you copied ALL files, especially the app/ folder
+
+Problem: TypeScript errors
+Solution: Run: npm install --save-dev typescript @types/react @types/node
+
+===============================================
+
+📤 PUSH TO GITHUB:
+
+Once everything works:
+
+git add .
+git commit -m "Add complete GDM quiz app"
+git push origin main
+
+This will deploy to Azure automatically!
+
+===============================================
+
+✨ WHAT'S INCLUDED:
+
+✅ Complete quiz engine with 5 GDM questions
+✅ Progress tracking
+✅ Score calculation
+✅ Session persistence (localStorage)
+✅ Beautiful UI with Tailwind CSS
+✅ Mobile responsive
+✅ TypeScript throughout
+✅ Ready for Azure deployment
+
+===============================================
+
+📝 NEXT STEPS:
+
+1. Test the quiz
+2. Add more quizzes in data/quizzes/
+3. Customize styling
+4. Deploy to Azure
+
+Need help? Check README.md for detailed documentation!
+
+===============================================
