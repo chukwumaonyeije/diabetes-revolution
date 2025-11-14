@@ -82,8 +82,8 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center space-x-2">
                 <span>📧</span>
-                <a href="mailto:info@diabetesrevolution.com" className="hover:text-teal-400 transition-colors">
-                  info@diabetesrevolution.com
+                <a href="mailto:info@codecraftmd.com" className="hover:text-teal-400 transition-colors">
+                  info@codecraftmd.com
                 </a>
               </li>
               <li className="flex items-center space-x-2">

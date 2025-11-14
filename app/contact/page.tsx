@@ -158,9 +158,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <a href="mailto:info@diabetesrevolution.com" className="text-teal-600 hover:text-teal-700">
-                      info@diabetesrevolution.com
-                    </a>
+                <a href="mailto:info@codecraftmd.com" className="text-teal-600 hover:text-teal-700">
+                  info@codecraftmd.com
+                </a>
                   </div>
                 </div>
                 
