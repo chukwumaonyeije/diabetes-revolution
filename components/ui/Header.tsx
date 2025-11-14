@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,12 +39,33 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/#quizzes"
-              className="bg-gradient-to-r from-teal-600 to-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-teal-700 hover:to-green-700 transition-all shadow-md hover:shadow-lg"
-            >
-              Get Started
-            </Link>
+            
+            {/* Signed Out - Show Get Started */}
+            <SignedOut>
+              <Link
+                href="/sign-in"
+                className="text-gray-700 hover:text-teal-600 font-medium transition-colors"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/sign-up"
+                className="bg-gradient-to-r from-teal-600 to-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-teal-700 hover:to-green-700 transition-all shadow-md hover:shadow-lg"
+              >
+                Get Started
+              </Link>
+            </SignedOut>
+            
+            {/* Signed In - Show Dashboard and Profile */}
+            <SignedIn>
+              <Link
+                href="/dashboard"
+                className="text-gray-700 hover:text-teal-600 font-medium transition-colors"
+              >
+                Dashboard
+              </Link>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
           </div>
           
           {/* Mobile Menu Button */}
